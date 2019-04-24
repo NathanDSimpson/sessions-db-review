@@ -1,5 +1,7 @@
 const messages = []
 
+
+
 module.exports = {
   getMessages(req, res) {
     res.status(200).send(messages)
