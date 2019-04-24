@@ -5,7 +5,8 @@ import axios from 'axios'
 class App extends Component {
   state = {
     input: '',
-    messages: []
+    messages: [],
+    number: null
   }
 
   componentDidMount = () => {
@@ -33,6 +34,15 @@ class App extends Component {
         })
       })
   }
+
+  updateRace = () => {
+    axios.put('/race', {number: this.state.number})
+  }
+  updateNumber = (e) => {
+    this.setState({
+      number: +e.target.value
+    })
+  }
   render() {
     return (
       <div className="App">
@@ -54,6 +64,10 @@ class App extends Component {
           />
           <button onClick={this.sendMessage}>Send</button>
         </div>
+
+        <hr/>
+        <input onChange = {this.updateNumber} type="number"/>
+        <button onClick={this.updateRace}>Update Race</button>
       </div>
     )
   }
